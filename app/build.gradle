@@ -6,15 +6,16 @@ plugins {
     id 'com.google.dagger.hilt.android'
     id 'kotlin-parcelize'
 }
-
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 android {
     namespace 'com.halil.cryptoapp'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.halil.cryptoapp"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -22,9 +23,15 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("boolean", "DEBUG", "true")
+            // Diğer debug ayarları
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("boolean", "DEBUG", "false")
+
         }
     }
     compileOptions {
@@ -37,12 +44,15 @@ android {
     buildFeatures {
         viewBinding true
         dataBinding true
+        buildConfig = true
+
     }
+
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
