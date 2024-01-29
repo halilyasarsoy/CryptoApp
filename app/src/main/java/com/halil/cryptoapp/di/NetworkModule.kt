@@ -1,6 +1,7 @@
 package com.halil.cryptoapp.di
 
 
+import com.halil.cryptoapp.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,7 +14,6 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
-import com.halil.cryptoapp.BuildConfig
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
