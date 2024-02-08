@@ -11,7 +11,7 @@ data class USD(
     @SerializedName("market_cap")
     val marketCap: Double?,
     @SerializedName("market_cap_dominance")
-    val marketCapDominance: Int?,
+    val marketCapDominance: Double?,
     @SerializedName("percent_change_1h")
     val percentChange1h: Double?,
     @SerializedName("percent_change_24h")
@@ -21,7 +21,7 @@ data class USD(
     @SerializedName("price")
     val price: Double?,
     @SerializedName("volume_24h")
-    val volume24h: Int?,
+    val volume24h: Double?,
     @SerializedName("volume_change_24h")
     val volumeChange24h: Double?
 )

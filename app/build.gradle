@@ -102,6 +102,10 @@ dependencies {
     // Paging3
     //noinspection GradleDependency
     implementation("androidx.paging:paging-runtime:$paging_version")
+
+    //circulardrawablelayout
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
 }
 
 kapt {

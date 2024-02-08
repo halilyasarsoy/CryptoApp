@@ -21,7 +21,7 @@ data class BTC(
     @SerializedName("price")
     val price: Int?,
     @SerializedName("volume_24h")
-    val volume24h: Int?,
+    val volume24h: Double?,
     @SerializedName("volume_change_24h")
     val volumeChange24h: Any?
 )
