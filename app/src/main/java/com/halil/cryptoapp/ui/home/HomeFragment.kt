@@ -1,9 +1,10 @@
 package com.halil.cryptoapp.ui.home
 
+import android.os.Bundle
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import com.halil.cryptoapp.base.BaseFragment
 import com.halil.cryptoapp.databinding.FragmentHomeBinding
 import com.halil.cryptoapp.model.home.Data
@@ -17,8 +18,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 ) {
     override val viewModel by viewModels<HomeViewModel>()
 
-    override fun onCreateFinish() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         viewModel.getData(API_KEY, LIMIT)
+    }
+
+    override fun onCreateFinish() {
+
     }
 
     override fun initializeListeners() {
@@ -44,7 +50,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     private fun setRecycler(data: List<Data>) {
         val mAdapter = HomeRecyclerAdapter(object : ItemClickListener {
             override fun onItemClick(coin: Data) {
-                //TODO Diğer ekrana push
+                if (coin.symbol != null) {
+                    val navigation =
+                        HomeFragmentDirections.actionHomeFragmentToDetailFragment(coin.symbol)
+                    Navigation.findNavController(requireView()).navigate(navigation)
+                }
+
             }
         })
         binding.recyclerView.adapter = mAdapter

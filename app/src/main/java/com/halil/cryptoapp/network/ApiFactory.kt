@@ -1,5 +1,6 @@
 package com.halil.cryptoapp.network
 
+import com.halil.cryptoapp.model.detail.DetailResponse
 import com.halil.cryptoapp.model.home.CryptoRespone
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -14,4 +15,10 @@ interface ApiFactory {
         @Header("X-CMC_PRO_API_KEY") apiKey: String,
         @Query("limit") limit: String
     ): CryptoRespone
+
+    @GET("v1/cryptocurrency/info")
+    suspend fun getDetail(
+        @Header("X-CMC_PRO_API_KEY") apiKey: String,
+        @Query("symbol") symbol: String
+    ): DetailResponse
 }
